@@ -77,14 +77,15 @@ SHOW REPLICA STATUS;
 ![](https://github.com/eskin-igor/netology_12-6/blob/main/12-6/12-5-2-3.JPG)
 
 У меня в статусе сервера Slave появилась ошибка - Fatal error: The replica I/O thread stops because source and replica have equal MySQL server ids.
-Эта ошибка может появилась потому чтоу  Master-сервера и Slave-сервера одинаковые номера server_id. Причем в конфигурационных файлах указанны явно разные id.
-Для исправления этой ошибки подключаемся к Slave-серверу и зайдём в mysql.
+Эта ошибка появилась, потому что у  Master-сервера и Slave-сервера одинаковые номера server_id. Причем в конфигурационных файлах указанны явно разные id.  
+Для исправления этой ошибки подключимся к Slave-серверу и зайдём в mysql.
 ```
 sudo docker exec -it mysql-slave /bin/bash 
 mysql -u root –p
 ```
 ![](https://github.com/eskin-igor/netology_12-6/blob/main/12-6/12-5-2-4.JPG)
 
+Проверим значение server-id.
 ```
 show variables like 'server_id';
 ```
@@ -115,7 +116,7 @@ show variables like 'server_id';
 ```
 ![](https://github.com/eskin-igor/netology_12-6/blob/main/12-6/12-5-2-5.JPG)
 
-Теперь статус сервера Slave выглядит следующим образом.
+Теперь статус сервера Slave без ошибок.
 
 ![](https://github.com/eskin-igor/netology_12-6/blob/main/12-6/12-5-2-6.JPG)
 ![](https://github.com/eskin-igor/netology_12-6/blob/main/12-6/12-5-2-7.JPG)
